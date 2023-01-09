@@ -1,0 +1,130 @@
+﻿@model DatabaseCoursework.Models.DVDTitle
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+    <style>
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        input[type=text], select {
+          width: 100%;
+          padding: 7px 13px;
+          margin: 4px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+
+
+
+        .custom-btn:hover {
+            color: #fff !important;
+            background-color: #11cdef;
+            transition: all .3s linear;
+        }
+
+</style>
+</head>
+<body>
+
+<div>
+      <div style="display: flex; justify-content: space-between; align-items: center">
+        <h4 class="custom-btn" style="font-size: 20px; 
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        margin-top: -5px;
+        color: #11cdef; padding: .5rem; border: 2px solid #11cdef; margin: 1rem; text-decoration: none; border-radius: 1rem;
+    ">DVD Title</h4>
+
+          <div>
+        <a asp-controller="DashBoard" asp-action="Index" class="custom-btn"
+        style="padding: 1rem 2rem; border: 2px solid #11cdef; border-radius: 1rem; text-decoration: none; color: #11cdef">Back to Dashboard</a>
+
+        <a class="custom-btn" asp-action="Index" style="padding: 1rem 2rem; border: 2px solid #11cdef; border-radius: 1rem; text-decoration: none; color: #11cdef">
+            Back to List
+         </a>
+    </div>
+    </div>
+
+    <dl class="row" style="max-width: 500px; margin: 0 auto; box-shadow: 2px 2px 10px #11cdef; 
+    background-image: linear-gradient(56deg, rgba(17, 205, 239, .3) 50%, transparent 50%);
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+padding: 1rem; border-radius: 1em;
+">
+        <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: .7rem;">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.CategoryNumber)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.CategoryNumber)
+            </dd>
+        </div>
+        <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: .7rem;">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.StudioNumber)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.StudioNumber)
+            </dd>
+        </div>
+
+        <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: .7rem;">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ProducerNumber)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.ProducerNumber)
+            </dd>
+        </div>
+
+         <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: .7rem;">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.DVDTitles)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.DVDTitles)
+            </dd>
+        </div>
+
+        <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: .7rem;">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.DateReleased)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.DateReleased)
+            </dd>
+        </div>
+
+        <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: .7rem;">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.StandardCharge)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.StandardCharge)
+            </dd>
+        </div>
+
+        <div style="display: flex; justify-content: space-around; align-items: center; margin-bottom: .7rem;">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.PenaltyCharge)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.PenaltyCharge)
+            </dd>
+        </div>
+    </dl>
+</div>
+
+</body>
+</html>

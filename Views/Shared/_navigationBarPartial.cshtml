@@ -1,0 +1,47 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Microsoft.AspNetCore.Identity
+
+<nav class="navbar navbar-expand-lg navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a style="padding-top: 14px; padding-bottom: 14px;" class="navbar-brand btn btn-outline-info" asp-area="" asp-controller="Home" asp-action="Index">Ropey DVDs <i class="bi bi-disc"></i></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"  asp-area="" asp-controller="Number1" asp-action="Index">1 Search DVD</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-route-show="no" asp-area="" asp-controller="Number2" asp-action="Index">2 Search DVD with availability</a>
+                        </li>
+
+                    @if(User.IsInRole("Manager") || User.IsInRole("Assistant"))
+                    {                
+                       <li class="nav-item">
+                            <a class="nav-link" asp-route-user="" asp-area="" asp-controller="DashBoard" asp-action="Index">View Dashboard</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-route-user="" asp-area="Identity" asp-page="/Account/Manage/ChangePassword"> Change Password</a>
+                        </li>
+
+                        
+
+       
+                    }
+
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+
+        </nav>

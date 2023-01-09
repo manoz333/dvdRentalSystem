@@ -1,0 +1,131 @@
+﻿@model DatabaseCoursework.Models.Loan
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+<style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+    }
+
+input[type=text], select {
+  width: 100%;
+  padding: 7px 13px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+div {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.custom-btn:hover {
+    color: #fff !important;
+    background-color: #11cdef;
+    transition: all .3s linear;
+}
+</style>
+</head>
+<body style="position: relative; overflow-x: hidden">
+
+<div style="display: flex; justify-content: space-between; align-items: center">
+<h2 style="font-size: 28px; 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: -5px;
+color: #11cdef
+">Add Loan</h2>
+<div>
+<a asp-controller="DashBoard" asp-action="Index" class="custom-btn"
+style="padding: 1rem 2rem; border: 2px solid #11cdef; border-radius: 1rem; text-decoration: none; color: #11cdef">Back to Dashboard</a>
+
+    <a class="custom-btn" asp-action="Index" style="padding: 1rem 2rem; border: 2px solid #11cdef; border-radius: 1rem; text-decoration: none; color: #11cdef">
+        Back to List</a>
+    </div>
+</div>
+
+<div class="row" style="height: 80vh; display: flex; justify-content: center; align-items: center;">
+    <div class="col-md-4" style="max-width: 360px; margin: 0 auto; box-shadow: 2px 2px 10px #11cdef; 
+    background-image: linear-gradient(56deg, rgba(17, 205, 239, .3) 50%, transparent 50%);
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+">
+        <form class="form-card" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group row justify-content-between">
+                <label asp-for="LoanTypeNumber" class="control-label"></label>
+                <select asp-for="LoanTypeNumber" name="LoanTypeNumber" id="LoanTypeNumber" class="form-select">
+                    <option value="" class="text-dark">Choose a dvd</option>
+                        @foreach(var stu in ViewBag.loantype)
+                        {
+                            <option class="text-dark" value=@stu.LoanTypeNumber>@stu.LoanTypes</option>
+                        }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CopyNumber" class="control-label"></label>
+                 <select asp-for="CopyNumber" name="CopyNumber" id="CopyNumber" class="form-select">
+                    <option value="" class="text-dark">Choose a dvd</option>
+                        @foreach(var stu in ViewBag.copynumber)
+                        {
+                            <option class="text-dark" value=@stu>@stu</option>
+                        }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MemberNumber" class="control-label"></label>
+                <select asp-for="MemberNumber" name="MemberNumber" id="MemberNumber" class="form-select">
+                    <option value="" class="text-dark">Choose a dvd</option>
+                        @foreach(var stu in ViewBag.membernumber)
+                        {
+                            <option class="text-dark" value=@stu.MemberNumber>@stu.MemberFirstName @stu.MemberLastName</option>
+                        }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateOut" class="control-label"></label>
+                <input style="width: 100%" asp-for="DateOut" disabled class="form-control" />
+                <span asp-validation-for="DateOut" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateDue" class="control-label"></label>
+                <input style="width: 100%" asp-for="DateDue" disabled class="form-control" />
+                <span asp-validation-for="DateDue" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateReturned" class="control-label"></label>
+                <input style="width: 100%" asp-for="DateReturned" disabled class="form-control" />
+                <span asp-validation-for="DateReturned" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="display: flex; justify-content: center;">
+                <input class="custom-btn" style="padding: .5rem 1rem; border: 2px solid #11cdef; border-radius: 1rem; text-decoration: none; color: #11cdef; cursor: pointer;" type="submit" value="Create"/>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+
+<div style="width: 600px; height: 600px; position: absolute; border-radius: 50%; top: -300px; right: -300px; z-index: -100 ;background-color: rgba(17, 205, 239, .3)">
+
+    </div>
+
+</body>
+</html>

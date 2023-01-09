@@ -1,0 +1,29 @@
+﻿@using groupCW.Views.DVDSearch
+@model IEnumerable<JoinHelper>
+
+
+<a asp-controller="Number1" asp-action="Index"  class="btn btn-outline-info mb-4 mt-3" style="width: 200px">Go Back To Search</a>
+
+<table class="table text-white table-bordered table-striped" style="width: 100%">
+    <thead style="border-bottom: 2px solid white;">
+        <tr>
+            <th style="width: 25%">DVD Titles</th>
+            <th style="width: 25%">DVD Released</th>
+            <th style="width: 25%">Actor First Name</th>
+            <th style="width: 25%">Actor Last Name</th>
+        </tr>
+    </thead>
+
+    <tbody >
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td class="text-white" width="25%">@obj.dTitleName</td>
+                <td class="text-white" width="25%">@obj.releaseDate2</td>
+                <td class="text-white" width="25%">@obj.fName</td>
+                <td class="text-white" width="25%">@obj.lName</td>
+
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,110 @@
+﻿@model DatabaseCoursework.Models.Loan
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+<style>
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+    }
+
+    input[type=text], select {
+      width: 100%;
+      padding: 7px 13px;
+      margin: 4px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    div {
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    .custom-btn:hover {
+        color: #fff !important;
+        background-color: #11cdef;
+        transition: all .3s linear;
+    }
+
+</style>
+</head>
+
+
+<body style="position: relative; overflow-x: hidden">
+<div style="display: flex; justify-content: space-between; align-items: center">
+    <h2 style="font-size: 28px; 
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        margin-top: -5px;
+    color: #11cdef
+    ">Edit Loan</h2>
+
+    <div>
+        <a asp-controller="DashBoard" asp-action="Index" class="custom-btn"
+        style="padding: 1rem 2rem; border: 2px solid #11cdef; border-radius: 1rem; text-decoration: none; color: #11cdef">Back to Dashboard</a>
+
+        <a class="custom-btn" asp-action="Index" style="padding: 1rem 2rem; border: 2px solid #11cdef; border-radius: 1rem; text-decoration: none; color: #11cdef">
+            Back to List
+         </a>
+    </div>
+</div>
+
+<div class="row" style="height: 80vh; display: flex; justify-content: center; align-items: center;">
+    <div class="col-md-4" style="max-width: 360px; margin: 0 auto; box-shadow: 2px 2px 10px #11cdef; 
+    background-image: linear-gradient(56deg, rgba(17, 205, 239, .3) 50%, transparent 50%);
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LoanNumber" />
+            <div class="form-group">
+                <label asp-for="LoanTypeNumber" class="control-label"></label>
+                <select asp-for="LoanTypeNumber" class="form-control" asp-items="ViewBag.LoanTypeNumber"></select>
+                <span asp-validation-for="LoanTypeNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CopyNumber" class="control-label"></label>
+                <select asp-for="CopyNumber" class="form-control" asp-items="ViewBag.CopyNumber"></select>
+                <span asp-validation-for="CopyNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MemberNumber" class="control-label"></label>
+                <select asp-for="MemberNumber" class="form-control" asp-items="ViewBag.MemberNumber"></select>
+                <span asp-validation-for="MemberNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOut" class="control-label"></label>
+                <input style="width: 100%" asp-for="DateOut" class="form-control" />
+                <span asp-validation-for="DateOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateDue" class="control-label"></label>
+                <input style="width: 100%" asp-for="DateDue" class="form-control" />
+                <span asp-validation-for="DateDue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateReturned" class="control-label"></label>
+                <input style="width: 100%" asp-for="DateReturned" class="form-control" />
+                <span asp-validation-for="DateReturned" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿@model DatabaseCoursework.Models.DVDCategory
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>DVDCategory</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="CategoryDescription" class="control-label my-2"></label>
+                            <input asp-for="CategoryDescription" class="form-control" />
+                            <span asp-validation-for="CategoryDescription" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="AgeRestricted" class="control-label my-2"></label>
+                            <input asp-for="AgeRestricted" class="form-control" />
+                            <span asp-validation-for="AgeRestricted" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group my-3">
+                    <input type="submit" value="Create" class="btn btn-outline-primary" />
+                </div>
+                <div class="my-3">
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+
+            
+            
+            
+        </form>
+    </div>
+</div>

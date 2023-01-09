@@ -1,0 +1,337 @@
+﻿@using groupCW.ViewModel
+
+@model List<ShowAllViewModel>
+
+@{
+    Layout = null;
+}
+
+
+@{
+    Layout = null;
+}
+
+@*<a class="text-decoration-none btn-primary btn btn-light mb-3" asp-controller="DVDSearch" asp-action="Filter">Filter DVDs</a>*@
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+   <head>
+    <meta charset="utcenter8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <title>
+        Ropey DVD Dashboard
+    </title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link rel="stylesheet" href="~/assets/css/nucleo-icons.css" />
+    @*<link href="../assets/css/nucleo-icons.css" rel="stylesheet" />*@
+
+    <link href="~/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/assets/css/nucleo-svg.css" />
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    @*<link href="../assets/css/nucleo-svg.css" rel="stylesheet" />*@
+    <link href="~/assets/css/nucleo-svg.css" rel="stylesheet" />
+
+    <!-- CSS Files -->
+    <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.2" rel="stylesheet" />
+    <link id="pagestyle" href="~/assets/css/argon-dashboard.css?v=2.0.2" rel="stylesheet" /></head>
+    
+    <body class="g-sidenav-show  bg-gray-100" style="overflow-x: hidden;">
+
+        <partial name="navigationNew" />
+
+
+    <div style="text-align: center; margin-left: -570px; padding: 10px; margin-top: 10px; margin-bottom: 20px;">
+        <span style="border: 1px solid #11cdef; padding: 7px; color: #11cdef; border-radius: 1em; font-weight: 600">Total Row Count: @( Model.Count() )</span>
+        <span style="font-weight: 600;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Update Return Date</span>
+        </div>
+    <div style="display: flex; justify-content: space-evenly;">
+        <span></span>
+   
+    </div>
+
+    <table class="table" style="width: 1200px; margin-left: 300px;">
+        <thead style="border-bottom: 2px solid white; font-size: 14px !important;">
+            <tr>
+                <th class="text-center" style="width: 1%">DVDTitle</th>
+                <th class="text-center" style="width: 1%">CopyNo</th>
+                <th class="text-center" style="width: 1%">LoanNo</th>
+                <th class="text-center" style="width: 5%">Date Out</th>
+                <th class="text-center" style="width: 5%">DueDate</th>
+                <th class="text-center" style="width: 5%">ReturnDate</th>
+                <th class="text-center" style="width: 1%">IsLate?</th>
+                <th class="text-center" style="width: 1%">TotalLate</th>
+                <th class="text-center" style="width: 1%">PenaltyCharge</th>
+                <th class="text-center" style="width: 3%">Total Penalty</th>
+                <th class="text-center" style="width: 5%"></th>
+            </tr>
+        </thead>
+
+        <tbody style="font-size: 12px !important;">
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td class="text-dark-50 text-center">@obj.DvdTitle</td>
+                <td class="text-dark-50 text-center">@obj.CopyNumber</td>
+                
+                @*Loan No*@
+                <td class="text-dark-50 text-center" >
+                    @if (@obj.LoanNumber == null)
+                    {
+                        <span>-</span>
+                    } else
+                    {
+                        <span>@obj.LoanNumber</span>
+                    }
+                </td>
+
+                @*Date Out*@
+                <td class="text-dark-50 text-center">
+                    @if (@obj.DateOut != null)
+                    {
+                        <span>@( @obj.DateOut == null ? "" : @obj.DateOut.ToString().Split(' ')[0] )</span>
+                    } else
+                    {
+                        <span>Not Loaned</span>
+                    }
+                </td>
+
+                @*Due Date*@
+                <td class="text-dark-50 text-center">
+                    @if (@obj.DateOut != null) {
+                        <span>@(@obj.DueDate == null ? "" : @obj.DueDate.ToString().Split(' ')[0])</span>
+                    } else {
+                        <span>-</span>
+                    }
+                </td>
+
+                @*Date Returned*@
+                <td class="text-dark-50 text-center">
+                    @if (@obj.DateOut != null && @obj.ReturnDate == null)
+                    {
+                        <span>Not Returned</span>
+                    } else if (@obj.DateOut != null && @obj.ReturnDate != null)
+                    {
+                        <span>@( @obj.ReturnDate == null ? "" : @obj.ReturnDate.ToString().Split(' ')[0] )</span>
+                    } else if (@obj.DateOut == null)
+                    {
+                        <span>-</span>
+                    }
+                </td>
+
+                @*Is late?*@
+                <td class="text-dark-50 text-center">
+                    @if (@obj.DateOut == null)
+                    {
+                        <span>-</span>
+                    } else if (@obj.ReturnDate > @obj.DueDate)
+                    {                        
+                        <span>Yes</span>
+                    } else
+                    {
+                        <span>No</span>
+                    }
+
+                </td>
+
+                @*If late? Total late days*@
+                <td class="text-dark-50 text-center">
+                    @if (@obj.DateOut == null)
+                    {
+                        <span>-</span>
+                    } else if (@obj.ReturnDate > @obj.DueDate)
+                    {           
+                        
+                       <span>@obj.NoOfDaysDVDNotReturnedAfterDeadline.Split('.')[0]</span>
+
+
+                    } else
+                    {
+                        <span>-</span>
+                    }
+
+                </td>
+                
+                @*Penalty Charge (per day)*@
+                <td class="text-dark-50 text-center">
+                   
+                    @if (@obj.ReturnDate > @obj.DueDate)
+                    {
+                        <span>@obj.PenaltyCharge</span>
+                        
+                    } else
+                    {
+                        <span>-</span>
+                    
+                    }  
+                </td>
+
+                @*Total Penalty*@
+                <td class="text-dark-50 text-center">
+
+                    @if ( 
+                    @obj.NoOfDaysDVDNotReturnedAfterDeadline != null
+                    && @obj.ReturnDate != null && @obj.DueDate != null
+                   )
+                    {
+
+                        @if (@obj.NoOfDaysDVDNotReturnedAfterDeadline.Contains('-'))
+                        {
+                            <span></span>
+                        } else
+                        {
+                            var x = @obj.NoOfDaysDVDNotReturnedAfterDeadline.Split('.')[0];
+
+                            var y = Int32.Parse(x);
+
+                            <span>@( @obj.PenaltyCharge * y )</span>
+
+                        }
+                    }
+
+                </td>
+
+                @*Update Button*@
+                <td class="text-dark-50 text-center">
+
+                    @if (@obj.DateOut != null && @obj.ReturnDate == null)
+                    {
+                        <a 
+                     style="text-decoration: none"
+                     class="badge rounded-pill bg-info" 
+                     asp-route-loanid="@obj.LoanNumber" 
+                     asp-controller="ShowAllDVD" asp-action="UpdateReturnDate">Update</a>
+                    }
+
+                     
+
+                </td>
+
+            </tr>
+        }
+    </tbody>
+    
+</table>
+
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <script>
+        var ctx1 = document.getElementById("chart-line").getContext("2d");
+
+        var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+
+        gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
+        gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
+        gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
+        new Chart(ctx1, {
+          type: "line",
+          data: {
+            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [{
+              label: "Mobile apps",
+              tension: 0.4,
+              borderWidth: 0,
+              pointRadius: 0,
+              borderColor: "#5e72e4",
+              backgroundColor: gradientStroke1,
+              borderWidth: 3,
+              fill: true,
+              data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+              maxBarThickness: 6
+
+            }],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: false,
+              }
+            },
+            interaction: {
+              intersect: false,
+              mode: 'index',
+            },
+            scales: {
+              y: {
+                grid: {
+                  drawBorder: false,
+                  display: true,
+                  drawOnChartArea: true,
+                  drawTicks: false,
+                  borderDash: [5, 5]
+                },
+                ticks: {
+                  display: true,
+                  padding: 10,
+                  color: '#fbfbfb',
+                  font: {
+                    size: 11,
+                    family: "Open Sans",
+                    style: 'normal',
+                    lineHeight: 2
+                  },
+                }
+              },
+              x: {
+                grid: {
+                  drawBorder: false,
+                  display: false,
+                  drawOnChartArea: false,
+                  drawTicks: false,
+                  borderDash: [5, 5]
+                },
+                ticks: {
+                  display: true,
+                  color: '#ccc',
+                  padding: 20,
+                  font: {
+                    size: 11,
+                    family: "Open Sans",
+                    style: 'normal',
+                    lineHeight: 2
+                  },
+                }
+              },
+            },
+          },
+        });
+    </script>
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+          var options = {
+            damping: '0.5'
+          }
+          Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="~/assets/js/argon-dashboard.min.js?v=2.0.2"></script>
+
+    <div style="width: 600px; height: 600px; position: absolute; border-radius: 50%; top: -300px; right: -300px; z-index: -100 ;background-color: rgba(17, 205, 239, .3)">
+
+    </div>
+
+
+    </body>
+
+</html>
+
+
+

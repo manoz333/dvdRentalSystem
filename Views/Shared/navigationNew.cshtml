@@ -1,0 +1,196 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3  fixed-start ms-4" id="sidenav-main" style="min-width: 260px !important; overflow-x: hidden; background-color: #172b4d !important; color: white !important;">
+        <div class="sidenav-header">
+            <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+            <a class="navbar-brand m-0" href=" target="_blank">
+                <img style="display: none" src="../assets/img/logo-ct-dark.png" class="navbar-brand-img h-100" alt="main_logo">
+                <i class="bi bi-disc-fill text-white-50"></i>
+                <span class="ms-1 font-weight-bold text-white-50">Ropey DVD's Navigation</span>
+            </a>
+        </div>
+        <hr class="horizontal dark mt-0">
+        <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="DashBoard" asp-action="Index">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white">Dashboard</span>
+                    </a>
+                </li>
+                
+                @*Number 1*@
+                <li class="nav-item">
+
+                    <a class="nav-link" asp-area="" asp-controller="DVDSearch" asp-action="Index">
+                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="bi bi-search text-white" style="margin-bottom: 9px; font-size: 18px"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white">
+                            1 Search DVD
+                        </span>
+                    </a>
+                </li>
+
+                @*Number 2*@
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="DVDSearch" asp-action="DVDWithAvailability">
+
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="bi bi-search text-white" style="margin-bottom: 9px; font-size: 18px;"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white">
+                           <div>2 Search DVD</div> with availability
+                        </span>
+                    </a>
+                </li>
+
+                @*Number 3*@
+                <li class="nav-item">
+                    <a class="nav-link text-black hover" asp-area="" asp-controller="MemberSearch" asp-action="Index">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="bi bi-people text-white" style="font-size: 18px; margin-bottom: 5px;"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white">3 Search Members</span>
+                    </a>
+                </li>
+
+                @*Number 4*@
+                <li class="nav-item">
+                    <a class="nav-link text-black hover" asp-area="" asp-controller="CastMemberSearch" asp-action="Index">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                             <i class="bi bi-eye-fill text-sm opacity-10" style="color: #7f74c4;"></i>
+
+                        </div>
+                        <span class="nav-link-text ms-1 text-white"><div>4 Show Producers,</div> Studio & Cast Lists</span>
+                    </a>
+
+                </li>
+              
+                @*Number 5*@
+                <li class="nav-item">
+                    <a class="nav-link text-black hover" asp-area="" asp-controller="CopyNumberSearch" asp-action="Index">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="bi bi-search text-white" style="margin-bottom: 9px; font-size: 18px"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white">5 Search DVD by Copy No</span>
+                    </a>
+
+                </li>
+
+                @*Number 6*@
+                <li class="nav-item">
+                    <a class="nav-link text-black hover" asp-area="" asp-controller="AddLoans" asp-action="Create">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="bi bi-plus-circle-dotted text-white" style="font-size: 20px; margin-bottom: 3px;"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white">6 Add Loan to a member</span>
+                    </a>
+                </li>
+
+                @*Number 7*@
+                <li class="nav-item">
+                    <a class="nav-link text-black hover" asp-area="" asp-controller="ShowAllDVD" asp-action="Index">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="bi bi-arrow-up-circle  text-info text-sm opacity-10" style="margin-bottom: 3px;"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white">7 Update DVD Return Date</span>
+                    </a>   
+                </li>
+
+                @*Number 8*@
+                <li class="nav-item">
+                    <a class="nav-link text-black hover" asp-area="" asp-controller="TotalDVDLoan" asp-action="Index">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="bi bi-search text-white" style="margin-bottom: 9px; font-size: 18px"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white">8 Search Member with<div>total loan taken</div></span>
+                    </a> 
+                    
+                </li>
+
+                @*Number 9*@
+                <li class="nav-item">
+                    <a class="nav-link text-black hover" asp-area="" asp-controller="AddDVD" asp-action="Create">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="bi bi-plus-circle-dotted text-white" style="font-size: 20px; margin-bottom: 3px;"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white">9 Add DVD</span>
+                    </a> 
+
+                    
+                </li>
+
+                @*Number 10*@
+                <li class="nav-item">
+                    <a class="nav-link text-black hover" asp-area="" asp-controller="RemoveOldDVD" asp-action="Index">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            @*<i class="bi bi-plus-circle-dotted text-dark" style="font-size: 20px; margin-bottom: 3px;"></i>*@
+                            <i class="bi bi-trash3-fill" style="font-size: 18px; margin-bottom: 3px; color: #ba3d46;"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white">10 Remove DVDs older <div>than 365 days</div></span>
+                    </a> 
+                </li>
+
+                @*Number 11*@
+                <li class="nav-item">
+                    <a class="nav-link text-black hover" asp-area="" asp-controller="LoanedOutDVDs" asp-action="Index">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            @*<i class="bi bi-plus-circle-dotted text-dark" style="font-size: 20px; margin-bottom: 3px;"></i>*@
+                            @*<i class="bi bi-trash3-fill" style="font-size: 20px; margin-bottom: 3px; color: blue;"></i>*@
+                            <i class="bi bi-eye-fill text-sm opacity-10" style="color: #7f74c4;"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white">11 Show DVDs currently <div>on Loan</div></span>
+                    </a> 
+                </li>
+
+                @*Number 12*@
+                <li class="nav-item">
+                    <a class="nav-link text-black hover" asp-area="" asp-controller="NotBorrowedDVD31Days" asp-action="Index">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            @*<i class="bi bi-plus-circle-dotted text-dark" style="font-size: 20px; margin-bottom: 3px;"></i>*@
+                            @*<i class="bi bi-trash3-fill" style="font-size: 20px; margin-bottom: 3px; color: blue;"></i>*@
+                            <i class="bi bi-eye-fill text-sm opacity-10" style="color: #7f74c4;"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white"><div>12 Show Member who have</div> not borrowed in last 31 days</span>
+                    </a> 
+                </li>
+
+                @*Number 13*@
+                <li class="nav-item">
+                    <a class="nav-link text-black hover" asp-area="" asp-controller="NoCopyLoanedForLast31Days" asp-action="Index">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                           
+                            <i class="bi bi-eye-fill text-sm opacity-10" style="color: #7f74c4;"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white"><div>13 Show DVDs not borrowed</div> in last 31 days</span>
+                    </a> 
+
+                </li>
+
+                @*Number 14*@
+                <li class="nav-item">
+                    <a class="nav-link text-black hover" asp-area="" asp-controller="ChangeAssistantPassword" asp-action="Index">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                           
+                            <i class="bi bi-info-circle-fill" style="font-size: 14px; margin-bottom: 3px"></i>
+                        </div>
+                        <span class="nav-link-text ms-1 text-white">14 Change User Detail</span>
+                    </a> 
+
+                </li>
+
+                
+                           
+
+            </ul>
+
+    
+        </div>
+        <span class="text-white" style=" font-size: 15px; position: absolute; bottom: 0; left: 50%; transform: translate(-50%, -50%)">Scroll for more <i class="bi bi-arrow-down"></i></span>
+    </aside>

@@ -1,0 +1,93 @@
+﻿@using groupCW.ViewModel
+
+@model List<LoanedOutDVDViewModel>
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+   <head>
+        <meta charset="utcenter8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+        <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        <title>
+            Ropey DVD Dashboard
+        </title>
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+        <!-- Nucleo Icons -->
+        <link rel="stylesheet" href="~/assets/css/nucleo-icons.css" />
+        @*<link href="../assets/css/nucleo-icons.css" rel="stylesheet" />*@
+
+        <link href="~/assets/css/nucleo-svg.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/assets/css/nucleo-svg.css" />
+
+        <!-- Font Awesome Icons -->
+        <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+        @*<link href="../assets/css/nucleo-svg.css" rel="stylesheet" />*@
+        <link href="~/assets/css/nucleo-svg.css" rel="stylesheet" />
+
+        <!-- CSS Files -->
+        <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.2" rel="stylesheet" />
+        <link id="pagestyle" href="~/assets/css/argon-dashboard.css?v=2.0.2" rel="stylesheet" />
+    </head>
+    
+    <body class="g-sidenav-show   bg-gray-100" style="position: relative; min-height: 100vh; overflow-x: hidden">
+    @*<div class="min-height-300 bg-primary w-100" style="position: relative ;z-index: -100; margin-top: -20px; min-height: 305px !important; border-bottom-right-radius: 19rem !important;"></div>*@
+
+     <partial name="navigationNew" />
+
+  
+
+    <div style="padding-left: 470px; padding-top: 50px; padding-bottom: 30px">
+        <span style="border: 1px solid #11cdef; padding: 7px;  color: #11cdef; border-radius: 1em; font-weight: 600; ">
+            Total Row Count: @( Model.Count() )
+        </span>
+    </div>
+
+
+    <table class="table" style="max-width: 900px; margin-left: 440px;">
+        <thead>
+            <tr>
+                <th style="width: 30%" class="text-dark-50 text-center">Date out</th>
+                <th style="width: 30%" class="text-dark-50 text-center">DVD Title</th>
+                <th style="width: 30%" class="text-dark-50 text-center">Copy No.</th>
+                <th style="width: 30%" class="text-dark-50 text-center">Member Who bought the DVD</th>
+            </tr>
+        </thead>
+
+          
+        <tbody >
+            @foreach(var obj in Model)
+            {
+                <tr>
+                    <td class="text-dark-50 text-center" width="30%">@obj.dateOut</td>
+                    <td class="text-dark-50 text-center" width="30%">@obj.dvdTitle</td>
+                    <td class="text-dark-50 text-center" width="30%">@obj.copyNumber</td>
+                    <td class="text-dark-50 text-center" width="30%">@obj.fName @obj.lName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+
+    <div style="width: 600px; height: 600px; position: absolute; border-radius: 50%; top: -300px; right: -300px; z-index: -100 ;background-color: rgba(17, 205, 239, .3)">
+
+    </div>
+
+    
+     
+    <partial name="scripts" />
+    </body>
+
+</html>
+
+
+

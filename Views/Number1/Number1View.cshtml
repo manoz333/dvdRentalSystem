@@ -1,0 +1,14 @@
+﻿@using DatabaseCoursework.Models
+@using groupCW.Views.DVDSearch
+@model JoinHelper
+
+
+@*<a class="text-decoration-none btn-primary btn btn-light mb-3" asp-controller="DVDSearch" asp-action="Filter">Filter DVDs</a>*@
+
+
+<form method="post" asp-action="Filter" class="mb-3 mt-3">
+     
+    <input asp-for="lName" class="form-control mb-3" placeholder="Search for DVD Tile by typing Actor's surname" />
+
+     <button type="submit" class="btn btn-outline-info" style="width: 120px"><i class="bi bi-search"></i> Search</button>
+</form>

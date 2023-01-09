@@ -1,0 +1,96 @@
+﻿@using DatabaseCoursework.Models
+@using groupCW.Views.DVDSearch
+@model JoinList
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <title>
+        Ropey DVD Dashboard
+    </title>
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <!-- Nucleo Icons -->
+    <link rel="stylesheet" href="~/assets/css/nucleo-icons.css" />
+    @*<link href="../assets/css/nucleo-icons.css" rel="stylesheet" />*@
+
+    <link href="~/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/assets/css/nucleo-svg.css" />
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    @*<link href="../assets/css/nucleo-svg.css" rel="stylesheet" />*@
+    <link href="~/assets/css/nucleo-svg.css" rel="stylesheet" />
+
+    <!-- CSS Files -->
+    <link id="pagestyle" href="../assets/css/argon-dashboard.css?v=2.0.2" rel="stylesheet" />
+    <link id="pagestyle" href="~/assets/css/argon-dashboard.css?v=2.0.2" rel="stylesheet" /></head>
+    
+    <body class="g-sidenav-show   bg-gray-100">
+    <div class="min-height-300 bg-primary position-absolute w-100" style="z-index: -100; margin-top: -20px; min-height: 305px !important; border-bottom-right-radius: 19rem !important;"></div>
+        
+        <partial name="navigationNew" />
+
+
+        <form method="post" asp-action="Index" class="mb-3" style="padding-top: 40px ;margin-left: 400px; max-width: 800px; z-index: 100; ">
+            <input asp-for="memberLastName" class="form-control mb-3" placeholder="Search Member By Last Name" />
+             <button type="submit" class="btn btn-outline-info" style="width: 120px"><i class="bi bi-search"></i> Search</button>
+        </form>
+
+        @if ( Model.showAllMember == true )
+        {
+            <div style="text-align: center; margin-left: -535px; padding: 10px; margin-top: 150px;">
+                <span style="border: 1px solid #11cdef; padding: 7px; color: #11cdef; border-radius: 1em; font-weight: 600">
+                    Total Row Count: @( Model.JoinHelperList.Count() )</span></div>
+
+            <table class="table" style="max-width: 900px; margin-left: 420px; margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <th class="text-center" style="width: 25%">DVD Titles</th>
+                        <th class="text-center" style="width: 25%">DVD Released</th>
+                        <th class="text-center" style="width: 25%">Copy Number</th>
+                        <th class="text-center" style="width: 25%">Actor First Name</th>
+                        <th class="text-center" style="width: 25%">Actor Last Name</th>
+                    </tr>
+                </thead>
+
+          
+                <tbody >
+                    @foreach(var obj in Model.JoinHelperList)
+                    {
+                   
+                        <tr>
+                            <td  class="text-dark-50 text-center" width="25%">@obj.dvdtitle</td>
+                            <td class="text-dark-50 text-center" width="25%">@obj.releaseDate2</td>
+                            <td class="text-dark-50 text-center" width="25%">@obj.copyNumber</td>
+                            <td class="text-dark-50 text-center" width="25%">@obj.fName</td>
+                            <td class="text-dark-50 text-center" width="25%">@obj.lName</td>
+
+                        </tr>
+                    }
+                    
+                </tbody>
+    
+            </table>
+    }
+
+
+
+   <partial name="scripts" />
+
+    </body>
+
+</html>
+
+

@@ -1,0 +1,130 @@
+﻿@model DatabaseCoursework.Models.DVDTitle
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+
+    <style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+    }
+
+    input[type=text], select {
+      width: 100%;
+      padding: 7px 13px;
+      margin: 4px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    div {
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    .custom-btn:hover {
+        color: #fff !important;
+        background-color: #11cdef;
+        transition: all .3s linear;
+    }
+</style>
+</head>
+<body style="position: relative; overflow-x: hidden">
+
+<div style="display: flex; justify-content: space-between; align-items: center">
+<h2 style="font-size: 28px; 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: -5px;
+color: #11cdef
+">Add DVD</h2>
+<div>
+<a asp-controller="DashBoard" asp-action="Index" class="custom-btn"
+style="padding: 1rem 2rem; border: 2px solid #11cdef; border-radius: 1rem; text-decoration: none; color: #11cdef">Back to Dashboard</a>
+
+    <a class="custom-btn" asp-action="Index" style="padding: 1rem 2rem; border: 2px solid #11cdef; border-radius: 1rem; text-decoration: none; color: #11cdef">
+        Back to List</a>
+    </div>
+</div>
+
+<div class="row" style="height: 80vh; display: flex; justify-content: center; align-items: center;">
+    <div class="col-md-4" style="max-width: 360px; margin: 0 auto; box-shadow: 2px 2px 10px #11cdef; 
+    background-image: linear-gradient(56deg, rgba(17, 205, 239, .3) 50%, transparent 50%);
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CategoryNumber" class="control-label"></label>
+                <select asp-for="CategoryNumber" name="CategoryNumber" id="CategoryNumber" class="form-select" required>
+                    <option value="" class="text-dark">Choose a category</option>
+                        @foreach(var stu in ViewBag.category)
+                        {
+                            <option class="text-dark" value=@stu.CategoryNumber>@stu.CategoryDescription</option>
+                        }
+                </select>
+                <span asp-validation-for="CategoryNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StudioNumber" class="control-label"></label>
+                <select asp-for="StudioNumber" name="StudioNumber" id="StudioNumber" class="form-select" required>
+                    <option value="" class="text-dark">Choose a studio</option>
+                        @foreach(var stu in ViewBag.studio)
+                        {
+                            <option class="text-dark" value=@stu.StudioNumber>@stu.StudioName</option>
+                        }
+                </select>
+                <span asp-validation-for="StudioNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProducerNumber" class="control-label"></label>
+                <select asp-for="ProducerNumber" name="ProducerNumber" id="ProducerNumber" class="form-select" required>
+                    <option value="" class="text-dark">Choose a producer</option>
+                        @foreach(var stu in ViewBag.producer)
+                        {
+                            <option class="text-dark" value=@stu.ProducerNumber>@stu.ProducerName</option>
+                        }
+                </select>
+                <span asp-validation-for="ProducerNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DVDTitles" class="control-label"></label>
+                <input asp-for="DVDTitles" class="form-control" required/>
+                <span asp-validation-for="DVDTitles" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateReleased" class="control-label"></label>
+                <input asp-for="DateReleased" class="form-control" required/>
+                <span asp-validation-for="DateReleased" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StandardCharge" class="control-label"></label>
+                <input asp-for="StandardCharge" class="form-control" required/>
+                <span asp-validation-for="StandardCharge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PenaltyCharge" class="control-label"></label>
+                <input asp-for="PenaltyCharge" class="form-control" required/>
+                <span asp-validation-for="PenaltyCharge" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: flex; justify-content: center;">
+                <input required class="custom-btn" style="padding: .5rem 1rem; border: 2px solid #11cdef; border-radius: 1rem; text-decoration: none; color: #11cdef; cursor: pointer;" type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="width: 600px; height: 600px; position: absolute; border-radius: 50%; top: -300px; right: -300px; z-index: -100 ;background-color: rgba(17, 205, 239, .3)">
+
+    </div>
+</body>
+</html>

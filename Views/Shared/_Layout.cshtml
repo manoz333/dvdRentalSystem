@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - groupCW</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/groupCW.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url("img/cd.jpg");
+            
+        }
+
+        .hover:hover {
+            background-color: gray;
+            font-size: 1.1rem;
+            transition: .2s all linear;
+            color: #fff !important;
+        }
+
+    </style>
+    @RenderSection("manualCSS", false)
+</head>
+<body style="min-height: 100vh; position: relative;">
+    <header>
+        <partial name="_navigationBarPartial" />
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    @*<button id="OK">Click me</button>*@
+
+    <footer class="border-top footer text-muted" style="position: absolute; bottom: 0;">
+        <div class="container text-center text-white">
+            <span style="background-color: black; padding: .5rem; border-radius: 1rem;">&copy; 2022 - Application Development Group Course Work (Group 5)</span>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        const t =  document.querySelector('#OK');
+        console.log(t);
+        t.addEventListener('click', e => {
+            alert("Button clicked")
+        })
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

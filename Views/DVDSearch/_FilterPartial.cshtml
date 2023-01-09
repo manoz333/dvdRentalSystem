@@ -1,0 +1,22 @@
+﻿@using DatabaseCoursework.Models
+@using groupCW.Views.DVDSearch
+@model IEnumerable<JoinHelper>
+
+
+<form method="post" class="mb-3 mt-3">
+    @**@
+    @foreach(var objs in Model)
+    {
+        <select asp-for="@objs.lName" class="p-2" name="surname" id="surname">
+            @foreach(var obj in Model)
+            {
+                <option value="@obj.lName">@obj.lName</option>
+            }
+        </select>
+
+        break;
+    }
+
+     <button type="submit" class="btn btn-primary" style="width: 150px">Update</button>
+    
+</form>

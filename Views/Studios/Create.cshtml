@@ -1,0 +1,34 @@
+﻿@model DatabaseCoursework.Models.Studio
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Studio</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                         <div class="form-group">
+                            <label asp-for="StudioName" class="control-label"></label>
+                            <input asp-for="StudioName" class="form-control" />
+                            <span asp-validation-for="StudioName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="form-group my-3">
+                    <input type="submit" value="Create" class="btn btn-outline-primary" />
+                </div>
+                <div class="my-3">
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+﻿@model IEnumerable<DatabaseCoursework.Models.Loan>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <style>
+        .custom-btn:hover {
+            color: #fff !important;
+            background-color: #11cdef;
+            transition: all .3s linear;
+        }
+    </style>
+
+</head>
+<body>
+<div style="display: flex; justify-content: space-between; align-items: center">
+    <a style="font-size: 20px; 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: -5px;
+    color: #11cdef; padding: .5rem; border: 2px solid #11cdef; margin: 1rem; text-decoration: none; border-radius: 1rem;
+" asp-action="Create"
+    class="custom-btn"
+    >Create New <i class="bi bi-plus-circle-fill"></i></a>
+    <div>
+<a asp-controller="DashBoard" asp-action="Index" class="custom-btn"
+style="padding: 1rem 2rem; border: 2px solid #11cdef; border-radius: 1rem; text-decoration: none; color: #11cdef">Back to Dashboard</a>
+
+    <a class="custom-btn" asp-action="Index" style="padding: 1rem 2rem; border: 2px solid #11cdef; border-radius: 1rem; text-decoration: none; color: #11cdef">
+        Back to List</a>
+    </div>
+</div>
+
+<table class="table" style="width: 1000px; margin: 2rem auto;">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col" class="text-center">
+                @Html.DisplayNameFor(model => model.DateOut)
+            </th>
+            <th scope="col" class="text-center">
+                @Html.DisplayNameFor(model => model.DateDue)
+            </th>
+            <th scope="col" class="text-center">
+                @Html.DisplayNameFor(model => model.DateReturned)
+            </th>
+            <th scope="col" class="text-center">
+                @Html.DisplayNameFor(model => model.LoanType)
+            </th>
+            <th scope="col" class="text-center">
+                @Html.DisplayNameFor(model => model.DVDCopy)
+            </th>
+            <th scope="col" class="text-center">
+                @Html.DisplayNameFor(model => model.Member)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.DateOut)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.DateDue)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.DateReturned)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.LoanType.LoanTypeNumber)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.DVDCopy.CopyNumber)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Member.MemberNumber)
+            </td>
+            <td class="text-center">
+                <a asp-action="Edit" asp-route-id="@item.LoanNumber"><i class="bi bi-pencil-fill text-dark"></i></a> <span style="color: black">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                <a asp-action="Details" asp-route-id="@item.LoanNumber"><i class="bi bi-info-circle text-dark"></i></a> <span style="color: black">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                <a asp-action="Delete" asp-route-id="@item.LoanNumber"><i class="bi bi-trash-fill text-danger"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

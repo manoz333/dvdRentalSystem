@@ -1,0 +1,50 @@
+﻿@model DatabaseCoursework.Models.DVDCopy
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>DVDCopy</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="DVDNumber" class="control-label my-2"></label>
+                            <select asp-for="DVDNumber" name="DVDNumber" id="DVDNumber" class="form-select">
+                                <option value="" class="text-dark">--Choose a dvd--</option>
+                                    @foreach(var stu in ViewBag.DVD)
+                                    {
+                                        <option class="text-dark" value=@stu.DVDNumber>@stu.DVDTitles</option>
+                                    }
+                            </select>
+                            <span asp-validation-for="DVDNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="DatePurchased" class="control-label my-2"></label>
+                            <input asp-for="DatePurchased" class="form-control" />
+                            <span asp-validation-for="DatePurchased" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group my-3">
+                    <input type="submit" value="Create" class="btn btn-outline-primary" />
+                </div>
+                <div class="my-3">
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+
+            
+            
+            
+        </form>
+    </div>
+</div>
